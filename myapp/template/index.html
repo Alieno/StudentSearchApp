@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Student Search App</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="{% static "jquery.js"%}"></script>
+    <script src="{% static "bootstrap-4/js/bootstrap.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap-4/css/bootstrap.css" %}">
+</head>
+<body>
+	<div class="container">
+		<div class="card accordion" id="accordion">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">Student Search App</a>
+				<ul class="navbar-nav mr-auto flex-row">
+					<li class="nav-item" id="headingOne">
+						<a class="nav-link" data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="true" aria-controls="collapseSearch">Search</a>
+					</li>
+					<li class="nav-item" id="headingTwo">
+						<a class="nav-link" data-toggle="collapse" href="#collapseCreate" role="button" aria-expanded="true" aria-controls="collapseCreate">Create</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" id="collapseSearch">
+	  			<div class="card card-body">
+	    			<form action="/search" method="get">
+						<div class="form-row">
+							<div class="form-group col">
+								<input type="text" class="form-control" placeholder="First name" name="searchFirstName">
+							</div>
+						    <div class="form-group col">
+						      	<input type="text" class="form-control" placeholder="Last name" name="searchLastName">
+						    </div>
+						</div>
+						<div class="form-row">
+						    <div class="form-group col">
+						      	<input type="text" class="form-control" id="inputCity" placeholder="City" name="searchCity">
+						    </div>
+						    <div class="form-group col">
+						      	<select id="inputState" class="form-control" name="searchState">
+						        	<option selected>Choose State</option>
+						        	<option>China</option>
+						        	<option>India</option>
+						        	<option>Ireland</option>
+						        	<option>Japan</option>
+						      	</select>
+						    </div>
+						</div>
+						<div class="form-row">
+						    <div class="form-group col-md-6">
+						      	<input type="text" class="form-control" id="inputMajor" placeholder="Major" name="searchMajor">
+						    </div>
+						    <div class="form-group col-md-3">						      	
+						      	<input type="text" class="form-control" id="inputStudentNumber" placeholder="StudentNumber" name="searchStudentNumber">
+						    </div>
+						    <div class="form-group col-md-3">
+						      	<select id="inputState" class="form-control" name="searchGender">
+						        	<option selected>Choose Gender</option>
+						        	<option>Male</option>
+						        	<option>Female</option>
+						      	</select>
+						    </div>
+						</div>
+					  	<button type="submit" class="btn btn-primary">Search</button>
+					</form>
+	  			</div>
+			</div>
+			<div class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" id="collapseCreate">
+	  			<div class="card card-body">
+	    			<form action="/create" method="post">
+	    				{% csrf_token %}
+						<div class="form-row">
+							<div class="form-group col">
+								<input type="text" class="form-control" placeholder="First name" required name="createFirstName">
+							</div>
+						    <div class="form-group col">
+						      	<input type="text" class="form-control" placeholder="Last name" required name="createLastName">
+						    </div>
+						</div>
+						<div class="form-row">
+						    <div class="form-group col">
+						      	<input type="text" class="form-control" id="inputCity" placeholder="City" required name="createCity">
+						    </div>
+						    <div class="form-group col">
+						      	<select id="inputState" class="form-control" name="createState">
+						        	<option selected>Choose State</option>
+						        	<option>China</option>
+						        	<option>India</option>
+						        	<option>Ireland</option>
+						        	<option>Japan</option>
+						      	</select>
+						    </div>
+						</div>
+						<div class="form-row">
+						    <div class="form-group col-md-6">
+						      	<input type="text" class="form-control" id="inputMajor" placeholder="Major" required name="createMajor">
+						    </div>
+						    <div class="form-group col-md-3">						      	
+						      	<input type="text" class="form-control" id="inputStudentNumber" placeholder="StudentNumber" required name="createStudentNumber">
+						    </div>
+						    <div class="form-group col-md-3">
+						      	<select id="inputState" class="form-control" name="createGender">
+						        	<option selected>Choose Gender</option>
+						        	<option>Male</option>
+						        	<option>Female</option>
+						      	</select>
+						    </div>
+						</div>
+					  	<button type="submit" class="btn btn-primary">Create</button>
+					</form>
+	  			</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

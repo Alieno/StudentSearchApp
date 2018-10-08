@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Student Search App</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="{% static "jquery.js"%}"></script>
+    <script src="{% static "bootstrap-4/js/bootstrap.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap-4/css/bootstrap.css" %}">
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-body">
+				<h2 class="card-title">{{ message }}</h5>
+				<h5 class="card-title">{{ student.firstName }} {{ student.lastName }}</h5>
+				<p class="card-text">First name: {{ student.firstName }}</p>
+				<p class="card-text">Last name: {{ student.lastName }}</p>
+				<p class="card-text">City: {{ student.city }}</p>
+				<p class="card-text">State: {{ student.state }}</p>
+				<p class="card-text">Major: {{ student.major }}</p>
+				<p class="card-text">Student Number: {{ student.studentNumber }}</p>
+				<p class="card-text">Gender: {{ student.gender }}</p>
+				<a href="../edit/?id={{ student.id }}" class="btn btn-primary">edit</a>
+				<a href="../delete/?id={{ student.id }}" class="btn btn-danger">delete</a>
+				<a href="../index/" class="btn btn-dark">back</a>
+			</div>
+		</div>
+	</div>
+</body>

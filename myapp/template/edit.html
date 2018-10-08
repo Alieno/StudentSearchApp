@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Student Search App</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="{% static "jquery.js"%}"></script>
+    <script src="{% static "bootstrap-4/js/bootstrap.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap-4/css/bootstrap.css" %}">
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-body">
+				<form action="/editdata" method="post">
+	    				{% csrf_token %}
+						<div class="form-row">
+							<input type="hidden" name="id" value="{{ student.id }}">
+							<div class="form-group col">
+								<input type="text" class="form-control" placeholder="Fisrt Name" required name="editFirstName" value="{{ student.firstName }}">
+							</div>
+						    <div class="form-group col">
+						      	<input type="text" class="form-control" placeholder="Last Name" required name="editLastName" value="{{ student.lastName }}">
+						    </div>
+						</div>
+						<div class="form-row">
+						    <div class="form-group col">
+						      	<input type="text" class="form-control" id="inputCity" placeholder="City" required name="editCity" value="{{ student.city }}">
+						    </div>
+						    <div class="form-group col">
+						      	<select id="inputState" class="form-control" name="editState">
+						        	<option {% ifequal student.state 'Choose State' %}selected{% endifequal %}>Choose State</option>
+						        	<option {% ifequal student.state 'China' %}selected{% endifequal %}>China</option>
+						        	<option {% ifequal student.state 'India' %}selected{% endifequal %}>India</option>
+						        	<option {% ifequal student.state 'Ireland' %}selected{% endifequal %}>Ireland</option>
+						        	<option {% ifequal student.state 'Japan' %}selected{% endifequal %}>Japan</option>
+						      	</select>
+						    </div>
+						</div>
+						<div class="form-row">
+						    <div class="form-group col-md-6">
+						      	<input type="text" class="form-control" id="inputMajor" placeholder="Major" required name="editMajor" value="{{ student.major }}">
+						    </div>
+						    <div class="form-group col-md-3">						      	
+						      	<input type="text" class="form-control" id="inputStudentNumber" placeholder="Student Number" required name="editStudentNumber" value="{{ student.studentNumber }}">
+						    </div>
+						    <div class="form-group col-md-3">
+						      	<select id="inputState" class="form-control" name="editGender">
+						        	<option {% ifequal student.gender 'Choose Gender' %}selected{% endifequal %}>Choose Gender</option>
+						        	<option {% ifequal student.gender 'Male' %}selected{% endifequal %}>Male</option>
+						        	<option {% ifequal student.gender 'Female' %}selected{% endifequal %}>Female</option>
+						      	</select>
+						    </div>
+						</div>
+					  	<button type="submit" class="btn btn-primary">Save</button>
+					</form>
+
+			</div>
+		</div>
+	</div>
+</body>
